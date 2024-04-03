@@ -1,10 +1,8 @@
-package ru.medonline.generation.service.impl;
+package ru.medonline.generation.utils.writers.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
-import ru.medonline.generation.model.ParsedData;
-import ru.medonline.generation.service.Writer;
+import ru.medonline.generation.utils.writers.Writer;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -22,10 +20,14 @@ public class SimpleFileWriter implements Writer<String> {
         return save(List.of(request), pathTo);
     }
 
-    private boolean save(List<String> request,  String pathTo) {
+    private boolean save(List<String> request, String pathTo) {
         try {
             Path file = Paths.get(pathTo);
-            Files.write(file, request, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+            if (Files.exists(file)) {
+                Files.write(file, request, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+            } else {
+                //todo: дописать чтобы создался такой файл
+            }
             return true;
         } catch (IOException e) {
             log.error("Ошибка во время записи в файл {}", pathTo, e);
@@ -35,6 +37,6 @@ public class SimpleFileWriter implements Writer<String> {
 
     @Override
     public boolean saveFile(List<String> data, String pathTo) {
-       return save(data, pathTo);
+        return save(data, pathTo);
     }
 }
