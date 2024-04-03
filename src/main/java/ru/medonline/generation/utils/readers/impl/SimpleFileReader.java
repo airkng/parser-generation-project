@@ -1,8 +1,8 @@
-package ru.medonline.generation.service.impl;
+package ru.medonline.generation.utils.readers.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.medonline.generation.service.Reader;
+import ru.medonline.generation.utils.readers.Reader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
