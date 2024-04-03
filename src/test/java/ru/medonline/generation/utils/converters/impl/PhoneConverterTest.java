@@ -1,11 +1,18 @@
 package ru.medonline.generation.utils.converters.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import ru.medonline.generation.model.Phone;
+import ru.medonline.generation.utils.converters.Converter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SpringBootTest(classes = {PhoneConverter.class})
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class PhoneConverterTest {
-    PhoneConverter helper = new PhoneConverter();
+    private final Converter<Phone> helper;
 
     @Test
     void parsingPhone_differentFormats_shouldReturnOk() {
@@ -29,15 +36,15 @@ public class PhoneConverterTest {
         String ex8 = "1111111111";
         String ex9 = "9999999999";
 
-        assertEquals(ex1, helper.convert(first));
-        assertEquals(ex2, helper.convert(sec));
-        assertEquals(ex3, helper.convert(third));
-        assertEquals(ex4, helper.convert(fourth));
-        assertEquals(ex5, helper.convert(fifth));
-        assertEquals(ex6, helper.convert(sixth));
-        assertEquals(ex7, helper.convert(seventh));
-        assertEquals(ex8, helper.convert(eight));
-        assertEquals(ex9, helper.convert(ninth));
+        assertEquals(ex1, helper.convert(first).getPhone());
+        assertEquals(ex2, helper.convert(sec).getPhone());
+        assertEquals(ex3, helper.convert(third).getPhone());
+        assertEquals(ex4, helper.convert(fourth).getPhone());
+        assertEquals(ex5, helper.convert(fifth).getPhone());
+        assertEquals(ex6, helper.convert(sixth).getPhone());
+        assertEquals(ex7, helper.convert(seventh).getPhone());
+        assertEquals(ex8, helper.convert(eight).getPhone());
+        assertEquals(ex9, helper.convert(ninth).getPhone());
     }
 
     @Test
@@ -62,15 +69,15 @@ public class PhoneConverterTest {
         String ex8 = "+71111111111";
         String ex9 = "+79999999999";
 
-        assertEquals(ex1, helper.convert(first));
-        assertEquals(ex2, helper.convert(sec));
-        assertEquals(ex3, helper.convert(third));
-        assertEquals(ex4, helper.convert(fourth));
-        assertEquals(ex5, helper.convert(fifth));
-        assertEquals(ex6, helper.convert(sixth));
-        assertEquals(ex7, helper.convert(seventh));
-        assertEquals(ex8, helper.convert(eight));
-        assertEquals(ex9, helper.convert(ninth));
+        assertEquals(ex1, helper.convert(first).getFullPhone());
+        assertEquals(ex2, helper.convert(sec).getFullPhone());
+        assertEquals(ex3, helper.convert(third).getFullPhone());
+        assertEquals(ex4, helper.convert(fourth).getFullPhone());
+        assertEquals(ex5, helper.convert(fifth).getFullPhone());
+        assertEquals(ex6, helper.convert(sixth).getFullPhone());
+        assertEquals(ex7, helper.convert(seventh).getFullPhone());
+        assertEquals(ex8, helper.convert(eight).getFullPhone());
+        assertEquals(ex9, helper.convert(ninth).getFullPhone());
     }
 
 }

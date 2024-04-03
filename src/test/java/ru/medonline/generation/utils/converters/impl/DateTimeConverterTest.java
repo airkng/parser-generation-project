@@ -1,6 +1,10 @@
 package ru.medonline.generation.utils.converters.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import ru.medonline.generation.utils.converters.DateConverter;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -8,8 +12,11 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SpringBootTest(classes = {DateTimeConverter.class})
+@RequiredArgsConstructor(onConstructor_ = {@Autowired})
 public class DateTimeConverterTest {
-    private final DateTimeConverter testingObject = new DateTimeConverter();
+    //@Autowired
+    private final DateConverter testingObject; //= new DateTimeConverter();
 
     @Test
     void firstFormat_rightData_shouldReturnOk() {

@@ -1,5 +1,5 @@
 package ru.medonline.generation.utils.converters;
 
-public interface StringConverter<T> {
+public interface Converter<T> {
     T convert(String dirtyStr);
 }
