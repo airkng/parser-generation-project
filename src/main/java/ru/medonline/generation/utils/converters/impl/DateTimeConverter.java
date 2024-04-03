@@ -2,7 +2,7 @@ package ru.medonline.generation.utils.converters.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.medonline.generation.utils.converters.StringConverter;
+import ru.medonline.generation.utils.converters.DateConverter;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class DateTimeConverter implements StringConverter<LocalDate> {
+public class DateTimeConverter implements DateConverter {
     private final DateTimeFormatter df0 = DateTimeFormatter.ofPattern("dd MM yyyy");
     private final DateTimeFormatter df8 = DateTimeFormatter.ofPattern("d MM yyyy");
     private final DateTimeFormatter df1 = DateTimeFormatter.ofPattern("d MM yy");

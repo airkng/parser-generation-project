@@ -5,6 +5,7 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
+//@ToString(exclude = {"fullPhone", "code"}, includeFieldNames = false, callSuper = false,)
 public class Phone {
     private String phone;
     private String code = "+7";
@@ -15,4 +16,8 @@ public class Phone {
         this.fullPhone = code + phone;
     }
 
+    @Override
+    public String toString() {
+        return phone;
+    }
 }
