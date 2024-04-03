@@ -1,4 +1,4 @@
-package ru.medonline.generation.service;
+package ru.medonline.generation.utils.writers;
 
 import java.util.List;
 
